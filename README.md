@@ -20,7 +20,7 @@ Add this token as environment variable "NOTION_TOKEN_PUT"
 
 Add the id of the notion page in the main_page_id variable
 
-Finally, write in the "Usernames" table the @ of the users whose tweets you want to retrieve
+Finally, in the notional page, define one or more columns with the first element being the name of the twitter account in "heading_1" format
 
 ### Exemple after execution : 
 
