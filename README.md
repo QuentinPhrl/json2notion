@@ -6,7 +6,8 @@ Various scripts to edit a Notion based on external sources
 
 - [x] Retrieve tweets of a user with his id
 - [x] Saves tweets in columns on the dashboard notion
-- [ ] Automatically retrieve the user's name from the notion dashboard
+- [x] Automatically retrieve the user's name from the notion dashboard
+- [x] Taking into account the number of columns in the page Notion in a dynamic way
 - [ ] Reverse the order of tweets on the notion dashboard (Newest first)
 - [ ] Other suggestions
 
