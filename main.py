@@ -75,6 +75,27 @@ def appendEmbed(tweet_ids,username,column_id):
         
     return ReturnCode
 
+#Function that retrieves the id of the blocks that contain a tweet and deletes them 
+def deleteEmbed(columns_id):
+
+    
+    embed_blocks_id = []
+        # Get the id of the 'embed' blocks that contain a twitter link 
+    for column_id in columns_id:
+        url_block_column = f"https://api.notion.com/v1/blocks/{column_id}/children"
+        blocks = json.loads(requests.request("GET", url_block_column, headers=headers).text)
+
+        for block in blocks["results"]:
+                # If the type of the block is "embed" and the url it contains starts with 'https://twitter.com/' then we copy its id
+            if block["type"] == "embed" and block["embed"]["url"].startswith('https://twitter.com/'):
+                embed_blocks_id.append(block["id"])
+
+    for embed_block_id in embed_blocks_id:
+
+        url_block_embed = f"https://api.notion.com/v1/blocks/{embed_block_id}"
+
+        requests.request("DELETE", url_block_embed, headers=headers)
+    
 #Function that checks if the column title is heading 1 and if the twitter username exists
 #if this is not the case the id of the column is not kept.  
 
@@ -83,6 +104,7 @@ def aggColumnUsername():
     agg_return = [[],[]]
 
     ColumnIDs = getColumnIDs()
+    deleteEmbed(ColumnIDs)
     Usernames = getUsernames(ColumnIDs)
 
     for index,username in enumerate(Usernames):
