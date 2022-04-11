@@ -18,7 +18,6 @@ class Page:
         Create a page
         :param database_id: Identifier for a Notion database
         :param properties: Property values of this page
-        :param children: Page content for the new page
         :return:
         """
         if properties is None:

@@ -1,60 +1,66 @@
-from dataclasses import field
-import imp
-import requests
+import optparse
 import json
 import os
 
 from properties import Properties
 from page import Page
 from database import Database
+from parse import Parser
+from notion_api import GetToken
 
+#token = os.environ["NOTION_TOKEN_PUT_EXPERIMENT"]
 
-token = os.environ["NOTION_TOKEN_PUT_EXPERIMENT"]
-
-database_id = 'd08f239718194d1f990c7ed7c67a6653'
-
-headers = {
-    "Accept": "application/json",
-    "Notion-Version": "2022-02-22",
-    "Content-Type": "application/json",
-    "Authorization": "Bearer " + token
-}
+#database_id = 'd08f239718194d1f990c7ed7c67a6653'
 
 PROPERTY = Properties()
+PARSER = Parser()
+GETTOKEN = GetToken()
 
 def main():
 
-    fields_key, data_extract = json_reader()
-    
-    column_type = read_database(fields_key)
+    parser = optparse.OptionParser()  
+    PARSER.get_option(parser=parser)
 
-    write_database(column_type,fields_key,data_extract)
+    datas = json_reader()
+
+    for data in datas:
+
+        fields_key = data[0]
+        data_extract = data[1]
+
+        column_type = read_database(fields_key)
+
+        write_database(column_type,fields_key,data_extract)
+
  
 def json_reader():
-    
-    data_extract =[]
+    datas = []
+    data_extract = []
 
-    json_file = open('data.json')
+    json_file = open(PARSER.options.json_input)
     json_dict = json.load(json_file)
-
-    data_extract.append(json_dict["entries"][0]["_id"])
     
-    fields_key=list(json_dict["entries"][0]["fields"])
-    fields_data=list(map(lambda l:json_dict["entries"][0]["fields"][l],json_dict["entries"][0]["fields"]))
+    for i in range(len(json_dict["entries"])):
+        
+        fields_key=list(json_dict["entries"][i]["fields"])
+        fields_data=list(map(lambda l:json_dict["entries"][i]["fields"][l],json_dict["entries"][0]["fields"]))
 
-    data_extract.append(fields_data)
-    data_extract.append(json_dict["entries"][0]["body"])
-    
+        data_extract=[json_dict["entries"][i]["_id"], fields_data, json_dict["entries"][i]["body"]]
+
+        datas.append([fields_key,data_extract])
+
     json_file.close()
 
-    return fields_key,data_extract
+    return datas
+
 
 def read_database(fields_key):
 
-    D = Database(integrations_token=token)
-    D.retrieve_database(database_id=database_id,fields_key=fields_key)
+    D = Database(integrations_token=GETTOKEN.token)
+    D.retrieve_database(database_id=PARSER.options.notion_db_id,fields_key=fields_key)
 
     return D.properties_list
+
 
 def write_database(column_type,fields_key,data_extract):
 
@@ -63,8 +69,9 @@ def write_database(column_type,fields_key,data_extract):
     for type, key, data in zip(column_type,fields_key,data_extract[1]):
         set_property(type,key,data)
     
-    P = Page(integrations_token=token)
-    P.create_page(database_id=database_id, properties=PROPERTY)
+    P = Page(integrations_token=GETTOKEN.token)
+    P.create_page(database_id=PARSER.options.notion_db_id, properties=PROPERTY)
+    
 
 def set_property(type,key,data):
 
@@ -88,6 +95,7 @@ def set_property(type,key,data):
         case 'phone_number':
             PROPERTY.set_phone_number(key, data)
     print(PROPERTY.result)
+
 
 if __name__ == '__main__':
     main()
