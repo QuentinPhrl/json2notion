@@ -1,5 +1,20 @@
 # Change log
 
+## v1.2.0
+
+### New Features
+
+- Exception handling 
+- Display of exceptions 
+- Adding children to the database
+- Management of the addition or update of a page in the database 
+
+### Added:
+
+- File ’children.py’
+- File ’console.py’
+- File ’block.py’
+
 ## v1.1
 
 ### New Features

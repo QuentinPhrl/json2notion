@@ -1,5 +1,7 @@
 import os
 
+from console import print_error
+
 class GetToken:
     def __init__(self):
         self.token = self._get_env_variable()
@@ -8,10 +10,11 @@ class GetToken:
         try:
             return os.environ["NOTION_TOKEN_PUT_EXPERIMENT"]
         except:
-            print("Notion Integration Token is not found")
+            print_error("Notion Integration Token is not found")
             print(
             """
                 Welcome to notionput!
+
                 To get started, you need to save your Notion Integration Token.
                 Find your token at
                     https://www.notion.so/my-integrations
