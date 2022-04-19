@@ -8,7 +8,7 @@ class GetToken:
 
     def _get_env_variable(self):
         try:
-            return os.environ["NOTION_TOKEN_PUT_EXPERIMENT"]
+            return os.environ["NOTION_TOKEN"]
         except:
             print_error("Notion Integration Token is not found")
             print(
