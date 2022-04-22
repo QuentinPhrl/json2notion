@@ -13,7 +13,7 @@ from notion_api import GetToken
 
 #token = os.environ["NOTION_TOKEN_PUT_EXPERIMENT"]
 
-database_id = 'd08f239718194d1f990c7ed7c67a6653'
+#database_id = 'd08f239718194d1f990c7ed7c67a6653'
 
 CHILDREN = Children()
 PROPERTY = Properties()
@@ -81,7 +81,7 @@ def retrive_page_id(content_type):
 
     page_ids = []
 
-    DATABASE.query_database_filter(database_id=database_id, column_name="Type", content=content_type)
+    DATABASE.query_database_filter(database_id=PARSER.options.notion_db_id, column_name="Type", content=content_type)
 
     for result in DATABASE.result["results"]:
             page_ids.append(result["id"])
