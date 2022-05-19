@@ -1,0 +1,29 @@
+{
+    "entries": [{
+            "_id": "coinmarketcap:btc",
+            "type": "CMC",
+            "fields": {
+                "min": "28670",
+                "price": "30278",
+                "max": "31000"
+            },
+            "body": {
+                "type": "embed",
+                "content": "https://coinmarketcap.com/fr/currencies/bitcoin/"
+            }
+        },
+        {
+            "_id": "coinmarketcap:etc",
+            "type": "CMC",
+            "fields": {
+                "min": "3100",
+                "price": "3200",
+                "max": "3500"
+            },
+            "body": {
+                "type": "embed",
+                "content": "https://coinmarketcap.com/fr/currencies/ethereum/"
+            }
+        }
+    ]
+}

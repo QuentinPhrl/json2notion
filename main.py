@@ -2,14 +2,14 @@
 import optparse
 import json
 
-from console import print_error,print_status
+from notionput.console import print_error,print_status
 
-from children import Children
-from properties import Properties
-from page import Page
-from database import Database
-from parse import Parser
-from notion_api import GetToken
+from notionput.children import Children
+from notionput.properties import Properties
+from notionput.page import Page
+from notionput.database import Database
+from notionput.parse import Parser
+from notionput.notion_api import GetToken
 
 #token = os.environ["NOTION_TOKEN_PUT_EXPERIMENT"]
 
@@ -28,7 +28,7 @@ def main():
     PARSER.get_option(parser=parser)
 
     datas = json_reader()
-
+  
     page_ids = retrive_page_id(datas[0][1][1])
 
     for index,(fields_key,data_extract)in enumerate(datas):

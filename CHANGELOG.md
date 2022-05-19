@@ -1,5 +1,16 @@
 # Change log
 
+## v1.2.1
+
+### Change:
+
+- Migration of the source files to the notionput/ sub-folder 
+
+### Added:
+
+- Subfolder ’notionput/’
+
+
 ## v1.2.0
 
 ### New Features
