@@ -1,4 +1,6 @@
-## About Notionput
+![Json2md logo](json2notion.png)
+
+## About json2notion
 
 Notion put is a generic script that allows to insert data from a json file in a Notion database. The interest of this script is that during the update of the data the information in the database is simply updated on the page which allows to keep the already existing backlink to other Notion page
 
@@ -9,7 +11,7 @@ Notion put is a generic script that allows to insert data from a json file in a 
 - Then save your api key(token) as your os environment variable
 
 ```Bash
-$ export NOTION_TOKEN_PUT_EXPERIMENT="{your integration token key}"
+$ export NOTION_TOKEN="{your integration token key}"
 ```
 
 ## Usage: Shell Command
@@ -37,8 +39,11 @@ $ export NOTION_TOKEN_PUT_EXPERIMENT="{your integration token key}"
 - Example of use of the script : 
 
 ```Bash
-    python3 main.py -d d08f397181941f990c7ed767a653 -f data.json
+    python3 main.py -i d08f397181941f990c7ed767a653 -f data.json
 ```
+
+**Note**
+Works with python version 3.10 or later
 
 ## Restrictions
 - If you want to increase the number of input data, you must first delete the elements in the database from the same source.

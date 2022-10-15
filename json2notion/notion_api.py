@@ -1,6 +1,6 @@
 import os
 
-from notionput.console import print_error
+from json2notion.console import print_error
 
 class GetToken:
     def __init__(self):
@@ -13,7 +13,7 @@ class GetToken:
             print_error("Notion Integration Token is not found")
             print(
             """
-                Welcome to notionput!
+                Welcome to json2notion!
 
                 To get started, you need to save your Notion Integration Token.
                 Find your token at

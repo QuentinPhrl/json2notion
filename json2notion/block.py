@@ -1,4 +1,4 @@
-from notionput.request_notion import Request
+from json2notion.request_notion import Request
 
 class Block:
     def __init__(self, integrations_token):

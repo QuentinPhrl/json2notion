@@ -1,5 +1,5 @@
-from notionput.request_notion import Request
-from notionput.console import print_error
+from json2notion.request_notion import Request
+from json2notion.console import print_error
 
 class Database:
     def __init__(self, integrations_token):

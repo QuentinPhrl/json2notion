@@ -2,7 +2,8 @@ import json
 
 import requests
 
-from notionput.__init__ import NOTION_VERSION
+from json2notion.__init__ import NOTION_VERSION
+from json2notion.console import print_error
 
 class Request:
     def __init__(self, url, integrations_token):
@@ -25,7 +26,12 @@ class Request:
         :return:
         """
         r = requests.post(url, data=json.dumps(body), headers=self.HEADER).json()
-        return r
+        
+        if r["object"] == "error":
+            print_error(f'Notion API : {r["message"]}')
+            exit(1)
+        else:
+            return r
 
     def call_api_get(self, url):
         """
@@ -34,7 +40,12 @@ class Request:
         :return:
         """
         r = requests.get(url, headers=self.HEADER).json()
-        return r
+
+        if r["object"] == "error":
+            print_error(f'Notion API : {r["message"]}')
+            exit(1)
+        else:
+            return r
 
     def call_api_patch(self, url, body):
         """
@@ -44,4 +55,9 @@ class Request:
         :return:
         """
         r = requests.patch(url, data=json.dumps(body), headers=self.HEADER).json()
-        return r
+        
+        if r["object"] == "error":
+            print_error(f'Notion API : {r["message"]}')
+            exit(1)
+        else:
+            return r

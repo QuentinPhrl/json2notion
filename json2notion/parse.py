@@ -1,4 +1,4 @@
-from notionput.console import print_error
+from json2notion.console import print_error
 
 class Parser:
     def __init__(self):
@@ -12,11 +12,11 @@ class Parser:
         Create a page
         :param parser: Object of OptionParser()
         """
-        parser.add_option('-d','--notion-db-id',
+        parser.add_option('-i','--id',
                         dest = 'notion_db_id',
                         type = 'string',
                         help = 'Specify the id of the database notion')
-        parser.add_option('-f', '--json-file',
+        parser.add_option('-f', '--file',
                         dest = 'json_input',
                         type = 'string',
                         help = 'Specify the input json file')

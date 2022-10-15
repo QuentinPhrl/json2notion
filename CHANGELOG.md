@@ -1,5 +1,20 @@
 # Change log
 
+## v1.3.0
+
+### Change:
+
+- Updating requirements.txt
+- Renaming subfolder 'json2notion'
+- Various bugs fixed 
+
+### Added:
+
+- Subfolder ’notionput/’
+- Error handling for API call 
+- json2notion.png
+
+
 ## v1.2.1
 
 ### Change:

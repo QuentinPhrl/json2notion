@@ -3,9 +3,9 @@
             "_id": "coinmarketcap:btc",
             "type": "CMC",
             "fields": {
-                "min": "28670",
-                "price": "30278",
-                "max": "31000"
+                "min": "12356",
+                "price": "12345",
+                "max": "10302"
             },
             "body": {
                 "type": "embed",
@@ -16,9 +16,9 @@
             "_id": "coinmarketcap:etc",
             "type": "CMC",
             "fields": {
-                "min": "3100",
-                "price": "3200",
-                "max": "3500"
+                "min": "1",
+                "price": "2",
+                "max": "3"
             },
             "body": {
                 "type": "embed",

@@ -1,7 +1,7 @@
-from notionput.children import Children
-from notionput.properties import Properties
-from notionput.request_notion import Request
-from notionput.block import Block
+from json2notion.children import Children
+from json2notion.properties import Properties
+from json2notion.request_notion import Request
+from json2notion.block import Block
 
 
 class Page:

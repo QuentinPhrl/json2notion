@@ -2,18 +2,15 @@
 import optparse
 import json
 
-from notionput.console import print_error,print_status
+from json2notion.console import print_error,print_status
 
-from notionput.children import Children
-from notionput.properties import Properties
-from notionput.page import Page
-from notionput.database import Database
-from notionput.parse import Parser
-from notionput.notion_api import GetToken
+from json2notion.children import Children
+from json2notion.properties import Properties
+from json2notion.page import Page
+from json2notion.database import Database
+from json2notion.parse import Parser
+from json2notion.notion_api import GetToken
 
-#token = os.environ["NOTION_TOKEN_PUT_EXPERIMENT"]
-
-#database_id = 'd08f239718194d1f990c7ed7c67a6653'
 
 CHILDREN = Children()
 PROPERTY = Properties()
@@ -138,7 +135,7 @@ def set_property(type,key,data):
         case 'checkbox':
             PROPERTY.set_checkbox(key, data)
         case 'url':
-            PROPERTY.set_checkbox(key, data)
+            PROPERTY.set_url(key, data)
         case 'email':
             PROPERTY.set_email(key, data)
         case 'phone_number':
@@ -149,7 +146,7 @@ def set_children(type,data):
     match type:
         case 'embed':
             CHILDREN.set_embed(data)
-    
+        #To be completed according to needs 
 
 if __name__ == '__main__':
     main()
